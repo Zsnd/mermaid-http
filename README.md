@@ -33,3 +33,23 @@ curl --location 'http://localhost:3000/render' \
 docker build -t mermaid-http .
 docker run -p 3000:3000 mermaid-http
 ```
+
+## 5. dify 集成
+
+mermaid-http 接入 dify 网络
+
+```
+sudo docker run -d --name mermaid-http --restart always --network docker_ssrf_proxy_network mermaid-http:1.0.0
+```
+
+进入 dify 容器内（可选）
+
+```
+sudo docker exec -it docker-worker-1 bash
+```
+
+测试 mermaid-http 是否可用（可选）
+
+```
+curl -i http://mermaid-http:3000
+```
